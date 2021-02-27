@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<form th:action="@{/blog/{id}(id=${post.getId()})}" th:method="PATCH" th:object="${post}">
+    <input type="hidden"  class="form-control" th:field="*{id}"/> <br>
+    <input type="text"  class="form-control" th:field="*{title}"   placeholder="Введите название статьи:"/> <br>
+    <input type="text"  class="form-control" th:field="*{anons}" placeholder="Введите анонс статьи"/> <br>
+    <textarea type="text"  class="form-control" th:field="*{full_text}" placeholder="Введите полный текст статьи"></textarea> <br>
+    <button type="submit" class="button button-submit">Добавить</button>
+</form>
+
+<div th:insert="blocks/footers :: footers"></div>
+</body>
+</html>
